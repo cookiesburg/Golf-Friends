@@ -1,0 +1,50 @@
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import UserTile from '../UserTile';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getUsers } from './actions';
+
+
+class UserList extends Component {
+  componentDidMount() {
+    const { getUsers } = this.props;
+    getUsers();
+  }
+
+  render() {
+    const { users, isLoaded } = this.props;
+    if (!isLoaded) return <h1>loading users...</h1>;
+    return (
+      <UsersContainer>
+        {users ? users.map(user => <UserTile key={user.id} user={user} />) : <p>hello</p>}
+      </UsersContainer>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  users: state.users.users,
+  isLoaded: state.users.usersLoaded,
+});
+
+// const mapDispatchToProps = dispatch => bindActionCreators({
+//   getUsers,
+// }, dispatch);
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getUsers: () => dispatch(getUsers())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserList);
+
+const UsersContainer = styled.div`
+  width: 62%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 50px;
+  margin-left:19%;
+`;

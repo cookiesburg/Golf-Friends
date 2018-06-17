@@ -25,7 +25,7 @@ class UserList extends Component {
   render() {
     return (
       <UsersContainer>
-        { this.state.users.map(user => <UserTile key={user.id} user={user} onDelete={this.deleteUser} />) }
+        { this.state.users.users.map(user => <UserTile key={user.id} user={user} onDelete={this.deleteUser} />) }
       </UsersContainer>
     );
   }
