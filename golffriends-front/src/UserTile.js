@@ -60,7 +60,7 @@ class UserTile extends Component {
   }
 }
 
-export default UserTile;
+export {UserTile, Tile};
 
 const Tile = styled.div`
   display: flex;
