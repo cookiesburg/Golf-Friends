@@ -4,28 +4,47 @@ import axios from 'axios';
 import { Tile } from './UserTile';
 import Toggle from './Toggle';
 import Modal from './Modal';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { deleteUser } from './users/actions';
 
 class DelUserBtn extends Component {
-  deleteUser = () => {
-    console.log(this.props.user);
+  // deleteUser = () => {
+  //   console.log(this.props.user);
+  //
+  //   axios.delete(`http://localhost:3001/api/v1/users/${this.props.user}`)
+  //   .then(response => {
+  //     console.log(response);
+  //   })
+  //   .catch(error => console.log(error))
+  // }
 
-    axios.delete(`http://localhost:3001/api/v1/users/${this.props.user}`)
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => console.log(error))
-  }
+  delUser = (e) => {
+    e.preventDefault();
+    const user = this.props.user;
+    console.log(user);
+    this.props.deleteUser(user);
+  };
 
   render() {
     return(
       <DeleteButton>
-        <i className="material-icons" onClick={this.deleteUser}>delete</i>
+        <i className="material-icons" onClick={this.delUser}>delete</i>
       </DeleteButton>
     );
   }
 }
 
-export default DelUserBtn;
+const mapStateToProps = state => ({
+  users: state.users.users,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  deleteUser,
+}, dispatch);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(DelUserBtn);
 
 const DeleteButton = styled.button`
   background-color: #222;

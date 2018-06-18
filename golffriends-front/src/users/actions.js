@@ -1,5 +1,6 @@
 export const GET_USERS = 'GET_USERS';
 export const ADD_USER = 'ADD_USER';
+export const DELETE_USER = 'DELETE_USER';
 
 export function getUsers() {
   return async function (dispatch) {
@@ -23,6 +24,20 @@ export function addUser(name) {
      console.log(user);
      return dispatch({
        type: 'ADD_USER',
+       data: user,
+     });
+   };
+ }
+
+export function deleteUser(user) {
+  return async function (dispatch) {
+    console.log(user);
+     const res = await fetch(`http://localhost:3001/api/v1/users/${user}`, {
+       method: 'DELETE',
+     });
+     console.log(user);
+     return dispatch({
+       type: 'DELETE_USER',
        data: user,
      });
    };

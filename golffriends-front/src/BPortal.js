@@ -14,7 +14,7 @@ export default class Portal extends Component {
     }
 
     componentWillUnmount = () => {
-        portalRoot.removeChiled(this.elem);
+        portalRoot.removeChild(this.elem);
     }
 
     render() {
