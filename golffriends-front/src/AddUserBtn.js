@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { Tile } from './UserTile';
 import Toggle from './Toggle';
-import Modal from './BModal';
+import Modal from './Modal';
 
 class AddUserBtn extends Component {
   state = {
@@ -34,10 +34,10 @@ class AddUserBtn extends Component {
           {({on, toggle}) => (
             <Fragment>
               <Modal on={on} toggle={toggle}>
-                <form>
+                <UserForm>
                   <input type='text' placeholder='Name' onChange={this.update('name')} />
                   <button onClick={this.submitUser}>Create User</button>
-                </form>
+                </UserForm>
               </Modal>
               <button onClick={toggle}>+</button>
             </Fragment>
@@ -49,3 +49,23 @@ class AddUserBtn extends Component {
 }
 
 export default AddUserBtn;
+
+const UserForm = styled.form`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  input {
+    line-height: 28px;
+  }
+
+  button {
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 3px;
+  }
+
+`;

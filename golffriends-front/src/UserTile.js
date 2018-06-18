@@ -2,9 +2,10 @@ import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import Toggle from './Toggle';
-import Modal from './BModal';
+import Modal from './Modal';
 import RoundHistory from './RoundHistory';
 import ScoreForm from './ScoreForm';
+import DelUserBtn from './DelUserBtn';
 
 class UserTile extends Component {
   state = {
@@ -24,6 +25,7 @@ class UserTile extends Component {
     return(
       <div>
         <Tile>
+          <TopRow><DelUserBtn user={this.props.user.id}/></TopRow>
           <Name>{this.props.user.name}</Name>
           <ButtonBar>
 
@@ -60,19 +62,17 @@ class UserTile extends Component {
   }
 }
 
-export {UserTile, Tile};
-
 const Tile = styled.div`
   display: flex;
   flex-direction: column;
   width: 150px;
   height: 150px;
   background: #222;
+  cursor: default;
   justify-content: center;
   align-items: center;
   font-size: 25px;
-  cursor:pointer;
-  box-shadow: 0 0 35px black;
+  box-shadow: 0 0 15px black;
   color: white;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -80,6 +80,13 @@ const Tile = styled.div`
     :hover {
       box-shadow: 0 0 1rem #ffc600;
     }
+`;
+const TopRow = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+  color: white;
 `;
 const Name = styled.div`
   display: flex;
@@ -109,5 +116,8 @@ const ModalButton = styled.button`
   transition: all .4s ease;
     :hover {
       box-shadow: 0 0 3rem black;
+      cursor: pointer;
     }
 `;
+
+export {UserTile, Tile};
