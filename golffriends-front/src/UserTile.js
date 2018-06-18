@@ -6,6 +6,7 @@ import Modal from './Modal';
 import RoundHistory from './RoundHistory';
 import ScoreForm from './ScoreForm';
 import DelUserBtn from './DelUserBtn';
+import EditUserBtn from './EditUserBtn';
 
 class UserTile extends Component {
   state = {
@@ -25,7 +26,10 @@ class UserTile extends Component {
     return(
       <div>
         <Tile>
-          <TopRow><DelUserBtn user={this.props.user.id}/></TopRow>
+          <TopRow>
+            <EditUserBtn user={this.props.user}/>
+            <DelUserBtn user={this.props.user.id}/>
+          </TopRow>
           <Name>{this.props.user.name}</Name>
           <ButtonBar>
 
@@ -84,7 +88,7 @@ const Tile = styled.div`
 const TopRow = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   font-size: 12px;
   color: white;
 `;

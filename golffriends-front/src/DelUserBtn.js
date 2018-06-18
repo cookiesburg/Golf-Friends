@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
-import { Tile } from './UserTile';
 import Toggle from './Toggle';
 import Modal from './Modal';
 import { connect } from 'react-redux';
@@ -22,7 +20,6 @@ class DelUserBtn extends Component {
   delUser = (e) => {
     e.preventDefault();
     const user = this.props.user;
-    console.log(user);
     this.props.deleteUser(user);
   };
 
