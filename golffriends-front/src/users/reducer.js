@@ -1,8 +1,9 @@
-import { GET_USERS } from './actions';
+import { GET_USERS, ADD_USER } from './actions';
 
 const initialState = {
   users: [],
   usersLoaded: false,
+
 };
 
 export default function (state = initialState, action) {
@@ -14,6 +15,11 @@ export default function (state = initialState, action) {
         ...state,
         users: data,
         usersLoaded: true,
+      };
+    case ADD_USER:
+      return {
+        ...state,
+        users: [data, ...state.users],
       };
     default:
       return state;

@@ -9,8 +9,7 @@ import { getUsers } from './actions';
 
 class UserList extends Component {
   componentDidMount() {
-    const { getUsers } = this.props;
-    getUsers();
+    this.props.getUsers();
   }
 
   render() {
@@ -18,8 +17,8 @@ class UserList extends Component {
     if (!isLoaded) return <h1>loading users...</h1>;
     return (
       <UsersContainer>
-        {users.map(user => <UserTile key={user.id} user={user} />)}
         <AddUserBtn />
+        {users.map(user => <UserTile key={user.id} user={user} />)}
       </UsersContainer>
     );
   }
