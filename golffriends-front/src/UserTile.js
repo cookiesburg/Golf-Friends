@@ -127,13 +127,13 @@ const Tile = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 25px;
-  box-shadow: 0 0 15px black;
+  border: 3px solid black;
   color: white;
   margin-top: 30px;
   margin-bottom: 30px;
   transition: all .4s ease;
     :hover {
-      box-shadow: 0 0 1rem #ffc600;
+      box-shadow: 0 0 3rem gray;
     }
 `;
 const TopRow = styled.div`

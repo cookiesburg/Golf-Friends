@@ -1,4 +1,4 @@
-import { GET_COURSES, } from './actions';
+import { GET_COURSES, ADD_COURSE } from './actions';
 
 const initialState = {
   courses: [],
@@ -14,6 +14,11 @@ export default function (state = initialState, action) {
         ...state,
         courses: data,
         coursesLoaded: true,
+      };
+    case ADD_COURSE:
+      return {
+        ...state,
+        courses: [data, ...state.courses]
       };
     default:
       return state;

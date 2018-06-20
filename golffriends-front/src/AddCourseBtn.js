@@ -1,15 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import Toggle from './Toggle';
 import Modal from './Modal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addUser } from './users/actions';
+import { addCourse} from './courses/actions';
 
-class AddUserBtn extends Component {
+class AddCourseBtn extends Component {
   state = {
     name: '',
+    rating: '',
+    slope: '',
   }
 
   update(field) {
@@ -18,74 +19,62 @@ class AddUserBtn extends Component {
     });
   }
 
-  // submitUser = (e) => {
-  //   e.preventDefault();
-  //   console.log(this.state.name);
-  //   const user = { name:this.state.name }
-  //   axios.post(`http://localhost:3001/api/v1/users`, {user})
-  //   .then(response => {
-  //     console.log(response);
-  //   })
-  //   .catch(error => console.log(error))
-  // }
-  submitUser = (e) => {
+  submitCourse = (e) => {
     e.preventDefault();
-    const user = this.state.name;
-    this.props.addUser(user);
+    const name = this.state.name;
+    const rating = this.state.rating;
+    const slope = this.state.slope;
+    this.props.addCourse(name, rating, slope);
   };
 
   render() {
     return(
-      <Tile>
+      <ButtonTile>
         <Toggle>
           {({on, toggle}) => (
             <Fragment>
               <Modal on={on} toggle={toggle}>
                 <UserForm>
-                  <input type='text' placeholder='Name' onChange={this.update('name')} />
+                  <input type='text' placeholder='COURSE NAME' onChange={this.update('name')} />
+                  <input type='text' placeholder='RATING' onChange={this.update('rating')} />
+                  <input type='text' placeholder='SLOPE' onChange={this.update('slope')} />
                   <button onClick={ (e) => {
-                    this.submitUser(e);
+                    this.submitCourse(e);
                     toggle();
-                  }}>Create User</button>
+                  }}>ADD COURSE</button>
                 </UserForm>
               </Modal>
               <button onClick={toggle}>+</button>
             </Fragment>
           )}
         </Toggle>
-      </Tile>
+      </ButtonTile>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  users: state.users.users,
+  courses: state.courses.courses,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  addUser,
+  addCourse,
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddUserBtn);
+export default connect(mapStateToProps, mapDispatchToProps)(AddCourseBtn);
 
-const Tile = styled.div`
+const ButtonTile = styled.div`
+  margin-bottom: 10px;
+  width: 500px;
+  padding: 20px;
   display: flex;
-  flex-direction: column;
-  width: 150px;
-  height: 150px;
-  background: #222;
-  cursor: default;
-  justify-content: center;
-  align-items: center;
-  font-size: 25px;
-  box-shadow: 0 0 15px black;
+  font-family: karla;
+  background-color: var(--base);
   color: white;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  transition: all .4s ease;
-    :hover {
-      box-shadow: 0 0 1rem var(--base);
-    }
+  border-radius: 10px;
+  :hover {
+    box-shadow: 0 0 1rem gray;
+  }
 `;
 
 const UserForm = styled.form`
