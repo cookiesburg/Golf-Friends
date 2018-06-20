@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getCourses } from './actions';
-import AddCourseBtn from '../AddCourseBtn';
+import AddCourseBtn from './AddCourseBtn';
 
 class CourseList extends Component {
   componentDidMount() {
@@ -60,7 +60,7 @@ const CourseTile = styled.div`
   font-family: karla;
   background-color: var(--base);
   color: white;
-  
+
   :hover {
     box-shadow: 0 0 1rem gray;
   }

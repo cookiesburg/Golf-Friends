@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import Toggle from './Toggle';
-import Modal from './Modal';
+import Toggle from '../Toggle';
+import Modal from '../Modal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addCourse} from './courses/actions';
+import { addCourse} from './actions';
 
 class AddCourseBtn extends Component {
   state = {
@@ -71,7 +71,7 @@ const ButtonTile = styled.div`
   font-family: karla;
   background-color: var(--base);
   color: white;
-  
+
   justify-content: center;
   :hover {
     box-shadow: 0 0 1rem gray;

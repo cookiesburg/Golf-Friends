@@ -23,7 +23,7 @@ class UserList extends Component {
         </nav>
         <UsersContainer>
           <AddUserBtn />
-          {users.map(user => <UserTile key={user.id} user={user} />)}
+          {users.map(user => <UserTile key={user.id} user={user} id={user.id} />)}
         </UsersContainer>
     </Fragment>
     );

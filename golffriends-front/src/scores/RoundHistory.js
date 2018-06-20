@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import ScoreTile from './ScoreTile';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getScores } from './scores/actions';
+import { getScores } from './actions';
 
 class RoundHistory extends Component {
   componentDidMount() {
     const user = this.props.user;
-    console.log(user);
     this.props.getScores(user);
   }
 
@@ -19,17 +18,17 @@ class RoundHistory extends Component {
       <HistoryBody>
         <HcpSect>
           <NumDisplay>
-            <p>HANDICAP INDEX</p>
-            <HdpDis>{handicap}</HdpDis>
+            <p className='label'>HANDICAP INDEX</p>
+            <p className={scores.length > 4 ? 'index' : ''}>{handicap}</p>
           </NumDisplay>
           <GraphDisplay>
             <p>this is a graph</p>
           </GraphDisplay>
         </HcpSect>
+
         <HistSect>
           {scores.map(score => <ScoreTile  key={score.created_at} course={score.course.name} strokes={score.strokes} />)}
         </HistSect>
-
       </HistoryBody>
     );
   }
@@ -54,9 +53,10 @@ const HistoryBody = styled.div`
     height:100%;
     border: 1px solid black;
     flex-grow:1;
+    font-family: karla;
 `;
 const HcpSect = styled.div`
-  flex-grow: 2;
+  height: 60%;
   border: 1px solid red;
   display: flex;
 `;
@@ -74,10 +74,16 @@ const NumDisplay = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 11px;
-`;
-const HdpDis = styled.div`
-  font-size: 55px;
+  p {
+    font-size: 20px;
+  }
+  .index {
+    font-size: 50px;
+  }
+  .label {
+    font-size: 12px;
+    color: gray;
+  }
 `;
 const GraphDisplay = styled.div`
   flex-grow: 3;

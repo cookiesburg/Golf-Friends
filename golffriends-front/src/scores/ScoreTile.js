@@ -21,7 +21,7 @@ const TileWrapper = styled.div`
   align-items: center;
   margin: 2px;
   border: 1px solid green;
-  width: 100px;
+  width: 128px;
 `;
 const ScoreDis = styled.div`
   flex-grow:3;

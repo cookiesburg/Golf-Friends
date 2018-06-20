@@ -1,8 +1,8 @@
-import { GET_SCORES, } from './actions';
+import { GET_SCORES, POST_SCORE } from './actions';
 
 const initialState = {
   scores: [],
-  coursesLoaded: false,
+  scoresLoaded: false,
   handicap: 'n/a',
 };
 
@@ -17,11 +17,11 @@ export default function (state = initialState, action) {
         scoresLoaded: true,
         handicap: data.handicap,
       };
-    // case ADD_COURSE:
-    //   return {
-    //     ...state,
-    //     courses: [data, ...state.courses]
-    //   };
+    case POST_SCORE:
+      return {
+        ...state,
+        courses: [data, ...state.scores]
+      };
     default:
       return state;
   }
