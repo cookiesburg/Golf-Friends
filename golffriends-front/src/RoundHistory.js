@@ -1,29 +1,52 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import ScoreTile from './ScoreTile';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getScores } from './scores/actions';
 
-export default class RoundHistory extends Component {
+class RoundHistory extends Component {
+  componentDidMount() {
+    const user = this.props.user;
+    console.log(user);
+    this.props.getScores(user);
+  }
 
   render() {
+    const { scores, isLoaded, handicap } = this.props;
+    if (!isLoaded) return <h1>loading scores...</h1>;
     return(
       <HistoryBody>
         <HcpSect>
           <NumDisplay>
             <p>HANDICAP INDEX</p>
-            <HdpDis>{this.props.handicap}</HdpDis>
+            <HdpDis>{handicap}</HdpDis>
           </NumDisplay>
           <GraphDisplay>
             <p>this is a graph</p>
           </GraphDisplay>
         </HcpSect>
         <HistSect>
-          {this.props.scores.map(score => <ScoreTile  key={score.created_at} score={score} />)}
+          {scores.map(score => <ScoreTile  key={score.created_at} course={score.course.name} strokes={score.strokes} />)}
         </HistSect>
 
       </HistoryBody>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  scores: state.scores.scores,
+  isLoaded: state.scores.scoresLoaded,
+  handicap: state.scores.handicap,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getScores,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(RoundHistory);
+
 const HistoryBody = styled.div`
     display: flex;
     flex-direction: column;

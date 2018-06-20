@@ -44,7 +44,7 @@ class AddCourseBtn extends Component {
                   }}>ADD COURSE</button>
                 </UserForm>
               </Modal>
-              <button onClick={toggle}>+</button>
+              <i onClick={toggle} className="material-icons add">add_box</i>
             </Fragment>
           )}
         </Toggle>
@@ -71,7 +71,8 @@ const ButtonTile = styled.div`
   font-family: karla;
   background-color: var(--base);
   color: white;
-  border-radius: 10px;
+  
+  justify-content: center;
   :hover {
     box-shadow: 0 0 1rem gray;
   }

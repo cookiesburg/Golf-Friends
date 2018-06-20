@@ -4,12 +4,10 @@ import styled from 'styled-components';
 export default class ScoreTile extends Component {
 
   render() {
-    const courseName = this.props.score;
-    console.log(courseName);
     return(
       <TileWrapper>
-        <ScoreDis>{this.props.score.strokes}</ScoreDis>
-        <CourseDate><span></span></CourseDate>
+        <ScoreDis>{this.props.strokes}</ScoreDis>
+        <CourseDate>{this.props.created_at}<span>{this.props.course}</span></CourseDate>
       </TileWrapper>
     );
   }

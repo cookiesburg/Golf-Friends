@@ -60,7 +60,7 @@ const CourseTile = styled.div`
   font-family: karla;
   background-color: var(--base);
   color: white;
-  border-radius: 10px;
+  
   :hover {
     box-shadow: 0 0 1rem gray;
   }

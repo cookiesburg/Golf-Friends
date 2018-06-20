@@ -26,6 +26,12 @@
   font-size: large;
 }
 
+.add {
+  font-size: 30px;
+  background-color: none;
+  color: white;
+}
+
 .modal-background {
   position: absolute;
   top: 0;

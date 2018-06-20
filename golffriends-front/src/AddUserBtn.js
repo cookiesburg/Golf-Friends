@@ -49,7 +49,7 @@ class AddUserBtn extends Component {
                   }}>Create User</button>
                 </UserForm>
               </Modal>
-              <button onClick={toggle}>+</button>
+              <i onClick={toggle} className="material-icons add">add_box</i>
             </Fragment>
           )}
         </Toggle>
