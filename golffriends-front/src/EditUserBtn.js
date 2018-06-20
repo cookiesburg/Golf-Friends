@@ -61,6 +61,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(EditUserBtn);
 
 const EditButton = styled.button`
   background-color: #222;
+  border: none;
   i {
     font-size: 20px;
     color: white;

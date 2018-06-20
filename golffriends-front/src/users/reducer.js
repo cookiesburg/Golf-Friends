@@ -1,9 +1,8 @@
-import { GET_USERS, ADD_USER, DELETE_USER, EDIT_USER } from './actions';
+import { GET_USERS, ADD_USER, DELETE_USER, EDIT_USER,  } from './actions';
 
 const initialState = {
   users: [],
   usersLoaded: false,
-
 };
 
 export default function (state = initialState, action) {

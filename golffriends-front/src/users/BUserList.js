@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import { UserTile } from '../UserTile';
+import UserTile from '../UserTile';
 import AddUserBtn from '../AddUserBtn';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getUsers } from './actions';
-
+import { Link } from 'react-router-dom';
 
 class UserList extends Component {
   componentDidMount() {
@@ -16,10 +16,16 @@ class UserList extends Component {
     const { users, isLoaded } = this.props;
     if (!isLoaded) return <h1>loading users...</h1>;
     return (
-      <UsersContainer>
-        <AddUserBtn />
-        {users.map(user => <UserTile key={user.id} user={user} />)}
-      </UsersContainer>
+      <Fragment>
+        <nav>
+          <Link to='/'>USERS</Link>
+          <Link to='/courses'>COURSES</Link>
+        </nav>
+        <UsersContainer>
+          <AddUserBtn />
+          {users.map(user => <UserTile key={user.id} user={user} />)}
+        </UsersContainer>
+    </Fragment>
     );
   }
 }

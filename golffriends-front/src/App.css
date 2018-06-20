@@ -14,11 +14,12 @@
   padding: 20px;
   color: white;
   letter-spacing: 5px;
-
+    margin-bottom: 2em;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2em;
+  font-family: karla;
 }
 
 .App-intro {
@@ -81,4 +82,12 @@ td {
 .modal-button {
   height: 100%;
   width: 100%;
+}
+
+nav > a {
+  font-size: 18px;
+  padding: 20px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-family: karla;
 }

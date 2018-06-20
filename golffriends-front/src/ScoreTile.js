@@ -4,23 +4,26 @@ import styled from 'styled-components';
 export default class ScoreTile extends Component {
 
   render() {
+    const courseName = this.props.score;
+    console.log(courseName);
     return(
       <TileWrapper>
-        <ScoreDis>88</ScoreDis>
-        <CourseDate>Timberlin White <span>5/11</span></CourseDate>
+        <ScoreDis>{this.props.score.strokes}</ScoreDis>
+        <CourseDate><span></span></CourseDate>
       </TileWrapper>
     );
   }
 }
 
 const TileWrapper = styled.div`
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 2px;
   border: 1px solid green;
-  flex-grow: 1;
+  width: 100px;
 `;
 const ScoreDis = styled.div`
   flex-grow:3;

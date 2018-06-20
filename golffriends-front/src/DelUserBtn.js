@@ -26,7 +26,23 @@ class DelUserBtn extends Component {
   render() {
     return(
       <DeleteButton>
-        <i className="material-icons" onClick={this.delUser}>delete</i>
+        <Toggle>
+          {({on, toggle}) => (
+            <Fragment>
+              <Modal on={on} toggle={toggle}>
+                <div>
+                  <button onClick={ (e) => {
+                    this.delUser(e);
+                    toggle();
+                  }}>Delete User</button>
+                  <button onClick={toggle}>nevermind</button>
+                </div>
+              </Modal>
+                <i className="material-icons" onClick={toggle}>delete</i>
+            </Fragment>
+          )}
+        </Toggle>
+
       </DeleteButton>
     );
   }
@@ -45,6 +61,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(DelUserBtn);
 
 const DeleteButton = styled.button`
   background-color: #222;
+  border: none;
   i {
     font-size: 20px;
     color: white;

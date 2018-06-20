@@ -10,18 +10,14 @@ export default class RoundHistory extends Component {
         <HcpSect>
           <NumDisplay>
             <p>HANDICAP INDEX</p>
-            <HdpDis>7.8</HdpDis>
+            <HdpDis>{this.props.handicap}</HdpDis>
           </NumDisplay>
           <GraphDisplay>
             <p>this is a graph</p>
           </GraphDisplay>
         </HcpSect>
         <HistSect>
-          
-          <ScoreTile />
-          <ScoreTile />
-          <ScoreTile />
-          <ScoreTile />
+          {this.props.scores.map(score => <ScoreTile  key={score.created_at} score={score} />)}
         </HistSect>
 
       </HistoryBody>
@@ -45,6 +41,8 @@ const HistSect = styled.div`
   flex-grow: 1;
   border: 1px solid blue;
   display:flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 `;
 //grid would be better for this section
 

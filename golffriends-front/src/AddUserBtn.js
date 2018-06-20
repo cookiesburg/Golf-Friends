@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Tile } from './UserTile';
 import Toggle from './Toggle';
 import Modal from './Modal';
 import { connect } from 'react-redux';
@@ -68,6 +67,26 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddUserBtn);
+
+const Tile = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  height: 150px;
+  background: #222;
+  cursor: default;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  box-shadow: 0 0 15px black;
+  color: white;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  transition: all .4s ease;
+    :hover {
+      box-shadow: 0 0 1rem #ffc600;
+    }
+`;
 
 const UserForm = styled.form`
   height: 100%;
