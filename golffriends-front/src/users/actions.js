@@ -45,7 +45,6 @@ export function addUser(name) {
 
 export function deleteUser(user) {
   return async function (dispatch) {
-    console.log(user);
      const res = await fetch(`http://localhost:3001/api/v1/users/${user}`, {
        method: 'DELETE',
      });

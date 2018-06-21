@@ -1,41 +1,62 @@
-return(
-  <div>
-    <CourseTile>
-      <TopRow>
-        <EditUserBtn user={this.props.user}/>
+import React, { Component, Fragment } from 'react';
+import styled from 'styled-components';
+import Toggle from '../Toggle';
+import Modal from '../Modal';
+import { Form } from '../utilities/Form';
 
-        <DelUserBtn user={this.props.user.id}/>
-      </TopRow>
-      <Name>{this.props.user.name}</Name>
-      <ButtonBar>
+class CourseTile extends Component {
+  render() {
+    return(
+        <CourseWrapper>
+            <div className='name'>{this.props.name}</div>
+            <div className='rating'>{this.props.rating}</div>
+            <div className='slope'>{this.props.slope}</div>
+            <Toggle>
+              {({on, toggle}) => (
+                <Fragment>
+                  <Modal on={on} toggle={toggle}>
+                    <Form className='formWrap'>
+                      <div className='header'>
+                        Edit Course
+                      </div>
+                      <div className='body'>
+                        <input type='text' placeholder={this.props.name}  />
+                        <input className='number' type='text' placeholder={this.props.rating}  />
+                        <input className='number' type='text' placeholder={this.props.slope}  />
+                      </div>
+                      <div className='buttons'>
+                        <button className='save'>SAVE CHANGES</button>
+                        <button className='delete'>DELETE COURSE</button>
+                      </div>
+                    </Form>
+                  </Modal>
+                  <i onClick={toggle} className="material-icons edit">edit</i>
+                </Fragment>
+              )}
+            </Toggle>
+        </CourseWrapper>
+    );
+  }
+}
 
-        <ButtonWrapper>
-          <Toggle>
-            {({on, toggle}) => (
-              <Fragment>
-                <Modal on={on} toggle={toggle}>
-                  <RoundHistory scores={this.state.scores} handicap={this.state.handicap} />
-                </Modal>
-                <ModalButton onClick={toggle}>SCORES</ModalButton>
-              </Fragment>
-            )}
-          </Toggle>
-        </ButtonWrapper>
+export default CourseTile;
 
-        <ButtonWrapper>
-        <Toggle>
-          {({on, toggle}) => (
-            <Fragment>
-              <Modal on={on} toggle={toggle}>
-                <ScoreForm user={this.props.user} />
-              </Modal>
-              <ModalButton onClick={toggle}>POST</ModalButton>
-            </Fragment>
-          )}
-        </Toggle>
-        </ButtonWrapper>
+const CourseWrapper = styled.div`
+margin-bottom: 10px;
+width: 500px;
+padding: 20px;
+font-family: karla;
+background-color: var(--base);
+color: white;
+display: flex;
 
-      </ButtonBar>
-    </CourseTile>
-  </div>
-);
+:hover {
+  box-shadow: 0 0 1rem gray;
+}
+  .name {
+    flex-grow: 4
+  }
+  .rating, .slope, .edit {
+    flex-grow: 1
+  }
+`;

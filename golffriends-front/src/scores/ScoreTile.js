@@ -19,9 +19,9 @@ const TileWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2px;
+  margin: 1px;
   border: 1px solid green;
-  width: 128px;
+  width: 115px;
 `;
 const ScoreDis = styled.div`
   flex-grow:3;

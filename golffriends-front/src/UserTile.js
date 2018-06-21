@@ -4,8 +4,9 @@ import Toggle from './Toggle';
 import Modal from './Modal';
 import RoundHistory from './scores/RoundHistory';
 import ScoreForm from './scores/ScoreForm';
-import DelUserBtn from './DelUserBtn';
-import EditUserBtn from './EditUserBtn';
+import DelUserBtn from './users/DelUserBtn';
+import EditUserBtn from './users/EditUserBtn';
+import { Form } from './utilities/Form';
 // import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 // import { getUser } from './users/actions';
@@ -26,7 +27,7 @@ class UserTile extends Component {
           <TopRow>
             <EditUserBtn user={this.props.user}/>
 
-            <DelUserBtn user={this.props.id}/>
+            {/* <DelUserBtn user={this.props.id}/> */}
           </TopRow>
           <Name>{this.props.user.name}</Name>
           <ButtonBar>
@@ -99,7 +100,7 @@ const Tile = styled.div`
 const TopRow = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   font-size: 12px;
   color: white;
 `;

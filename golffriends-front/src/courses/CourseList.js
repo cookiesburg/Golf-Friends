@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getCourses } from './actions';
 import AddCourseBtn from './AddCourseBtn';
+import CourseTile from './CourseTile';
 
 class CourseList extends Component {
   componentDidMount() {
@@ -21,11 +22,11 @@ class CourseList extends Component {
         </nav>
         <CourseWrapper>
           <AddCourseBtn />
-          {courses.map(course => <CourseTile key={course.id}>
-                                  <div className='name'>{course.name}</div>
-                                  <div className='rating'>{course.rating}</div>
-                                  <div className='slope'>{course.slope}</div>
-                                </CourseTile> )}
+          {courses.map(course => <CourseTile key={course.id}
+                                    name={course.name}
+                                    rating={course.rating}
+                                    slope={course.slope}
+                                  />)}
         </CourseWrapper>
     </Fragment>
     );
@@ -50,31 +51,4 @@ const CourseWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
-`;
-
-const CourseTile = styled.div`
-  margin-bottom: 10px;
-  width: 500px;
-  padding: 20px;
-  display: flex;
-  font-family: karla;
-  background-color: var(--base);
-  color: white;
-
-  :hover {
-    box-shadow: 0 0 1rem gray;
-  }
-
-
-  .name {
-    flex-grow: 4;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  .rating, .slope {
-    flex-grow: 1;
-    font-size: 18px;
-    color: white;
-  }
-
 `;

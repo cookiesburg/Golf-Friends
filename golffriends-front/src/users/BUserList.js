@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import UserTile from '../UserTile';
-import AddUserBtn from '../AddUserBtn';
+import AddUserBtn from './AddUserBtn';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getUsers } from './actions';

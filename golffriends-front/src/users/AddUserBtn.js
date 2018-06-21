@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
-import Toggle from './Toggle';
-import Modal from './Modal';
+import Toggle from '../Toggle';
+import Modal from '../Modal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addUser } from './users/actions';
+import { addUser } from './actions';
+import { Form } from '../utilities/Form';
 
 class AddUserBtn extends Component {
   state = {
@@ -18,16 +18,6 @@ class AddUserBtn extends Component {
     });
   }
 
-  // submitUser = (e) => {
-  //   e.preventDefault();
-  //   console.log(this.state.name);
-  //   const user = { name:this.state.name }
-  //   axios.post(`http://localhost:3001/api/v1/users`, {user})
-  //   .then(response => {
-  //     console.log(response);
-  //   })
-  //   .catch(error => console.log(error))
-  // }
   submitUser = (e) => {
     e.preventDefault();
     const user = this.state.name;
@@ -41,13 +31,20 @@ class AddUserBtn extends Component {
           {({on, toggle}) => (
             <Fragment>
               <Modal on={on} toggle={toggle}>
-                <UserForm>
-                  <input type='text' placeholder='Name' onChange={this.update('name')} />
-                  <button onClick={ (e) => {
-                    this.submitUser(e);
-                    toggle();
-                  }}>Create User</button>
-                </UserForm>
+                <Form>
+                  <div className='header'>
+                    New User Form
+                  </div>
+                  <div className='body'>
+                    <input type='text' placeholder='Name' onChange={this.update('name')} />
+                  </div>
+                  <div className='buttons'>
+                    <button className='save' onClick={ (e) => {
+                      this.submitUser(e);
+                      toggle();
+                    }}>CREATE USER</button>
+                  </div>
+                </Form>
               </Modal>
               <i onClick={toggle} className="material-icons add">add_box</i>
             </Fragment>

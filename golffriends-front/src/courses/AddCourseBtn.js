@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import Toggle from '../Toggle';
 import Modal from '../Modal';
+import { Form } from '../utilities/Form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addCourse} from './actions';
@@ -29,26 +30,33 @@ class AddCourseBtn extends Component {
 
   render() {
     return(
-      <ButtonTile>
+      <CourseWrapper>
         <Toggle>
           {({on, toggle}) => (
             <Fragment>
               <Modal on={on} toggle={toggle}>
-                <UserForm>
-                  <input type='text' placeholder='COURSE NAME' onChange={this.update('name')} />
-                  <input type='text' placeholder='RATING' onChange={this.update('rating')} />
-                  <input type='text' placeholder='SLOPE' onChange={this.update('slope')} />
-                  <button onClick={ (e) => {
-                    this.submitCourse(e);
-                    toggle();
-                  }}>ADD COURSE</button>
-                </UserForm>
+                <Form>
+                  <div className='header'>
+                    Course Form
+                  </div>
+                  <div className='body'>
+                    <input type='text' placeholder='Course Name + (TEES)' onChange={this.update('name')} />
+                    <input className='number' type='text' placeholder='rating' onChange={this.update('rating')} />
+                    <input className='number' type='text' placeholder='slope' onChange={this.update('slope')} />
+                  </div>
+                  <div className='buttons'>
+                    <button className='post' onClick={ (e) => {
+                      this.submitCourse(e);
+                      toggle();
+                    }}>ADD COURSE</button>
+                  </div>
+              </Form>
               </Modal>
               <i onClick={toggle} className="material-icons add">add_box</i>
             </Fragment>
           )}
         </Toggle>
-      </ButtonTile>
+      </CourseWrapper>
     );
   }
 }
@@ -63,37 +71,17 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCourseBtn);
 
-const ButtonTile = styled.div`
-  margin-bottom: 10px;
-  width: 500px;
-  padding: 20px;
-  display: flex;
-  font-family: karla;
-  background-color: var(--base);
-  color: white;
+const CourseWrapper = styled.div`
+margin-bottom: 10px;
+width: 500px;
+padding: 20px;
+font-family: karla;
+background-color: var(--base);
+color: white;
+display: flex;
+justify-content: center;
 
-  justify-content: center;
-  :hover {
-    box-shadow: 0 0 1rem gray;
-  }
-`;
-
-const UserForm = styled.form`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  input {
-    line-height: 28px;
-  }
-
-  button {
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 3px;
-  }
-
+:hover {
+  box-shadow: 0 0 1rem gray;
+}
 `;

@@ -16,6 +16,9 @@ class RoundHistory extends Component {
     if (!isLoaded) return <h1>loading scores...</h1>;
     return(
       <HistoryBody>
+        <Header>
+          <p>PLAYER STATISTICS</p>
+        </Header>
         <HcpSect>
           <NumDisplay>
             <p className='label'>HANDICAP INDEX</p>
@@ -49,11 +52,23 @@ export default connect(mapStateToProps, mapDispatchToProps)(RoundHistory);
 const HistoryBody = styled.div`
     display: flex;
     flex-direction: column;
-    width: 540px;
-    height:100%;
+    width: 600px;
+    height:400px;
     border: 1px solid black;
     flex-grow:1;
     font-family: karla;
+`;
+const Header = styled.div`
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  color:white;
+  letter-spacing: 1px;
+  background-color: #222;
+  padding: 2px;
+  font-family: karla;
 `;
 const HcpSect = styled.div`
   height: 60%;
@@ -62,15 +77,17 @@ const HcpSect = styled.div`
 `;
 const HistSect = styled.div`
   flex-grow: 1;
-  border: 1px solid blue;
+  margin: 1px;
   display:flex;
   flex-wrap: nowrap;
   overflow-x: auto;
+  min-height: 130px;
 `;
 //grid would be better for this section
 
 const NumDisplay = styled.div`
   flex-grow: 1;
+  max-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;

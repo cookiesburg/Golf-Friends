@@ -31,8 +31,6 @@ export function postScore(courseId, strokes, id) {
   };
 }
 
-
-
 function calculateHandicap(scores) {
   if(scores.length < 5) {
     return '5 SCORES REQUIRED';

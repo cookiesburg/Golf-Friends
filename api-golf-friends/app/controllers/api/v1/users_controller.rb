@@ -39,7 +39,6 @@ module Api::V1
     private
 
     def user_params
-      debugger;
       params.require(:user).permit(:name)
     end
   end

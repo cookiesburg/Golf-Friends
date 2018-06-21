@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import Toggle from './Toggle';
-import Modal from './Modal';
+import Toggle from '../Toggle';
+import Modal from '../Modal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { editUser } from './users/actions';
+import { editUser, deleteUser } from './actions';
+import { Form } from '../utilities/Form';
 
 class EditUserBtn extends Component {
   state = {
@@ -16,6 +17,13 @@ class EditUserBtn extends Component {
       [field]: e.currentTarget.value
     });
   }
+
+  deleteUser = (e) => {
+    e.preventDefault();
+    const user = this.props.user;
+    console.log(user);
+    this.props.deleteUser(user);
+  };
 
   editUser = (e) => {
     e.preventDefault();
@@ -31,13 +39,24 @@ class EditUserBtn extends Component {
           {({on, toggle}) => (
             <Fragment>
               <Modal on={on} toggle={toggle}>
-                <UserForm>
-                  <input type='text' placeholder={this.state.name} onChange={this.update('name')} />
-                  <button onClick={ (e) => {
-                    this.editUser(e);
-                    toggle();
-                  }}>Commit Changes</button>
-                </UserForm>
+                <Form>
+                  <div className='header'>
+                    User Form
+                  </div>
+                  <div className='body'>
+                    <input className='text'type='text' placeholder={this.state.name} onChange={this.update('name')} />
+                  </div>
+                  <div className='buttons'>
+                    <button className='save' onClick={ (e) => {
+                      this.editUser(e);
+                      toggle();
+                    }}>SAVE CHANGES</button>
+                    <button className='delete' onClick={ (e) => {
+                      this.deleteUser(e);
+                      toggle();
+                    }}>DELETE USER</button>
+                  </div>
+                </Form>
               </Modal>
                 <i className="material-icons" onClick={toggle}>edit</i>
             </Fragment>
@@ -54,6 +73,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   editUser,
+  deleteUser
 }, dispatch);
 
 

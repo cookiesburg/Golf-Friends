@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import Toggle from './Toggle';
-import Modal from './Modal';
+import Toggle from '../Toggle';
+import Modal from '../Modal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { deleteUser } from './users/actions';
+import { deleteUser } from './actions';
 
 class DelUserBtn extends Component {
   // deleteUser = () => {
