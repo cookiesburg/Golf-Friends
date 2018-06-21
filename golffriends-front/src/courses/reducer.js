@@ -1,4 +1,4 @@
-import { GET_COURSES, ADD_COURSE } from './actions';
+import { GET_COURSES, ADD_COURSE, EDIT_COURSE, DELETE_COURSE, } from './actions';
 
 const initialState = {
   courses: [],
@@ -19,6 +19,18 @@ export default function (state = initialState, action) {
       return {
         ...state,
         courses: [data, ...state.courses]
+      };
+    case DELETE_COURSE:
+      const courses = state.courses.filter(e => e.id !== data);
+      return {
+        ...state,
+        courses: courses,
+      };
+    case EDIT_COURSE:
+      const courseList = state.courses.filter(e => e.id !== data.id);
+      return {
+        ...state,
+        courses: [data, ...courseList]
       };
     default:
       return state;

@@ -1,5 +1,7 @@
 export const GET_COURSES = 'GET_COURSES';
 export const ADD_COURSE = 'ADD_COURSE';
+export const EDIT_COURSE = 'EDIT_COURSE';
+export const DELETE_COURSE = 'DELETE_COURSE';
 
 export function getCourses() {
   return async function (dispatch) {
@@ -12,7 +14,6 @@ export function getCourses() {
     });
   };
 }
-
 export function addCourse(name, rating, slope) {
   return async function (dispatch) {
     const res = await fetch('http://localhost:3001/api/v1/courses', {
@@ -27,3 +28,40 @@ export function addCourse(name, rating, slope) {
     });
   };
 }
+export function deleteCourse(id) {
+  return async function (dispatch) {
+     const res = await fetch(`http://localhost:3001/api/v1/courses/${id}`, {
+       method: 'DELETE',
+     });
+     const course = await res.json();
+     const courseID = course.id;
+     console.log('convert json');
+     console.log(courseID);
+     return dispatch({
+       type: 'DELETE_COURSE',
+       data: courseID,
+     });
+   };
+ }
+
+export function editCourse(id, course) {
+  console.log('in action',id, course);
+  return async function (dispatch) {
+     const res = await fetch(`http://localhost:3001/api/v1/courses/${id}`, {
+       method: 'PUT',
+       headers: {'Content-Type': 'application/json'},
+       body: JSON.stringify({'course': {
+         'id': id,
+         'name': course.name,
+         'rating': course.rating,
+         'slope': course.slope,
+         }}),
+     });
+     const updatedCourse = await res.json();
+     console.log('updated',updatedCourse)
+     return dispatch({
+       type: 'EDIT_COURSE',
+       data: updatedCourse,
+     });
+   };
+ }

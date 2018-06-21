@@ -22,11 +22,7 @@ class CourseList extends Component {
         </nav>
         <CourseWrapper>
           <AddCourseBtn />
-          {courses.map(course => <CourseTile key={course.id}
-                                    name={course.name}
-                                    rating={course.rating}
-                                    slope={course.slope}
-                                  />)}
+          {courses.map(course => <CourseTile key={course.id}course={course}/>)}
         </CourseWrapper>
     </Fragment>
     );

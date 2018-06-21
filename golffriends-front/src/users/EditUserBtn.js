@@ -20,9 +20,8 @@ class EditUserBtn extends Component {
 
   deleteUser = (e) => {
     e.preventDefault();
-    const user = this.props.user;
-    console.log(user);
-    this.props.deleteUser(user);
+    const id = this.props.user.id;
+    this.props.deleteUser(id);
   };
 
   editUser = (e) => {

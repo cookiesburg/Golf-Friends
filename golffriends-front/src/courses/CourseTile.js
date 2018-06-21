@@ -2,20 +2,24 @@ import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import Toggle from '../Toggle';
 import Modal from '../Modal';
+import CourseForm from './CourseForm';
 import { Form } from '../utilities/Form';
+// import CourseForm from './CourseForm';
 
 class CourseTile extends Component {
   render() {
+    const { course } = this.props;
     return(
         <CourseWrapper>
-            <div className='name'>{this.props.name}</div>
-            <div className='rating'>{this.props.rating}</div>
-            <div className='slope'>{this.props.slope}</div>
+            <div className='name'>{course.name}</div>
+            <div className='rating'>{course.rating}</div>
+            <div className='slope'>{course.slope}</div>
             <Toggle>
               {({on, toggle}) => (
                 <Fragment>
                   <Modal on={on} toggle={toggle}>
-                    <Form className='formWrap'>
+                    <CourseForm course={course} toggle={toggle}/>
+                    {/* <Form className='formWrap'>
                       <div className='header'>
                         Edit Course
                       </div>
@@ -28,7 +32,7 @@ class CourseTile extends Component {
                         <button className='save'>SAVE CHANGES</button>
                         <button className='delete'>DELETE COURSE</button>
                       </div>
-                    </Form>
+                    </Form> */}
                   </Modal>
                   <i onClick={toggle} className="material-icons edit">edit</i>
                 </Fragment>

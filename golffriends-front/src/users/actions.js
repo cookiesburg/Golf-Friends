@@ -43,15 +43,18 @@ export function addUser(name) {
    };
  }
 
-export function deleteUser(user) {
+export function deleteUser(id) {
   return async function (dispatch) {
-     const res = await fetch(`http://localhost:3001/api/v1/users/${user}`, {
+     const res = await fetch(`http://localhost:3001/api/v1/users/${id}`, {
        method: 'DELETE',
      });
-     console.log(user);
+     const user = await res.json();
+     const userID = user.id;
+     console.log('convert json');
+     console.log(userID);
      return dispatch({
        type: 'DELETE_USER',
-       data: user,
+       data: userID.id,
      });
    };
  }
