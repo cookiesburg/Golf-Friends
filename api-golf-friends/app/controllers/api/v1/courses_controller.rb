@@ -15,6 +15,12 @@ module Api::V1
       render json: @course
     end
 
+    def update
+      @course = Course.find(params[:id])
+      @course.update_attributes(course_params)
+      render json: @course
+    end
+
     private
 
     def course_params
