@@ -28,21 +28,6 @@ export function addCourse(name, rating, slope) {
     });
   };
 }
-export function deleteCourse(id) {
-  return async function (dispatch) {
-     const res = await fetch(`http://localhost:3001/api/v1/courses/${id}`, {
-       method: 'DELETE',
-     });
-     const course = await res.json();
-     const courseID = course.id;
-     console.log('convert json');
-     console.log(courseID);
-     return dispatch({
-       type: 'DELETE_COURSE',
-       data: courseID,
-     });
-   };
- }
 
 export function editCourse(id, course) {
   console.log('in action',id, course);

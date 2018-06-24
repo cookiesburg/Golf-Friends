@@ -17,17 +17,23 @@ const TileWrapper = styled.div`
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  justify-content: space-around;
   margin: 1px;
-  border: 1px solid green;
-  width: 115px;
+  height: 33%;
+  background-color: #222;
 `;
 const ScoreDis = styled.div`
-  flex-grow:3;
   font-size: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 `;
 const CourseDate = styled.div`
-  flex-grow:1;
   font-size: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: orange;
 `;

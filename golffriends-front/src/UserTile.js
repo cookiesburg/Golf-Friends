@@ -7,27 +7,14 @@ import ScoreForm from './scores/ScoreForm';
 import DelUserBtn from './users/DelUserBtn';
 import EditUserBtn from './users/EditUserBtn';
 import { Form } from './utilities/Form';
-// import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import { getUser } from './users/actions';
 
 class UserTile extends Component {
-  // componentDidMount() {
-  //   const id = this.props.id
-  //   console.log(id);
-  //   this.props.getUser(id);
-  // }
-
   render() {
-    // const { user, isLoaded } = this.props;
-    // if (!isLoaded) return <h1>loading user...</h1>;
     return(
       <div>
         <Tile >
           <TopRow>
             <EditUserBtn user={this.props.user}/>
-
-            {/* <DelUserBtn user={this.props.id}/> */}
           </TopRow>
           <Name>{this.props.user.name}</Name>
           <ButtonBar>
@@ -64,17 +51,6 @@ class UserTile extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   user: state.users.user,
-//   isLoaded: state.users.userLoaded
-// });
-//
-// const mapDispatchToProps = dispatch => bindActionCreators({
-//   getUser,
-// }, dispatch);
-
-// export default connect(mapStateToProps, mapDispatchToProps)(UserTile);
 
 export default UserTile;
 

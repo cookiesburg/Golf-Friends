@@ -11,6 +11,11 @@ const Form = styled.div`
   justify-content: center;
   font-family: karla;
 
+  ${'' /* just fro round history component */}
+  .history {
+    display: flex;
+  }
+
   .header {
     border: 1px solid black;
     height: 100px

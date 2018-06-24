@@ -3,7 +3,7 @@ import Toggle from '../Toggle';
 import Modal from '../Modal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { editCourse, deleteCourse } from './actions';
+import { editCourse } from './actions';
 import { Form } from '../utilities/Form';
 
 class CourseForm extends Component {
@@ -19,20 +19,10 @@ class CourseForm extends Component {
     });
   }
 
-  deleteCourse = (e) => {
-    e.preventDefault();
-    const id = this.props.course.id;
-    console.log(id);
-    this.props.deleteCourse(id);
-  };
-
   editCourse = (e) => {
     e.preventDefault();
     const id = this.props.course.id;
     const course = this.state;
-    console.log(course);
-    console.log('between');
-    console.log(id);
     this.props.editCourse(id, course);
   };
 
@@ -53,10 +43,6 @@ class CourseForm extends Component {
             this.editCourse(e);
             this.props.toggle(e);
           }}>SAVE CHANGES</button>
-          <button className='delete' onClick={ (e) => {
-            this.deleteCourse(e);
-            this.props.toggle(e);
-          }}>DELETE COURSE</button>
         </div>
       </Form>
     );
@@ -69,7 +55,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   editCourse,
-  deleteCourse
 }, dispatch);
 
 

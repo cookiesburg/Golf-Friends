@@ -5,6 +5,7 @@ import Modal from '../Modal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { editUser, deleteUser } from './actions';
+import DelUserBtn from './DelUserBtn';
 import { Form } from '../utilities/Form';
 
 class EditUserBtn extends Component {
@@ -50,10 +51,8 @@ class EditUserBtn extends Component {
                       this.editUser(e);
                       toggle();
                     }}>SAVE CHANGES</button>
-                    <button className='delete' onClick={ (e) => {
-                      this.deleteUser(e);
-                      toggle();
-                    }}>DELETE USER</button>
+
+                    <DelUserBtn user={this.props.user} />
                   </div>
                 </Form>
               </Modal>

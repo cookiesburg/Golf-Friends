@@ -20,12 +20,6 @@ export default function (state = initialState, action) {
         ...state,
         courses: [data, ...state.courses]
       };
-    case DELETE_COURSE:
-      const courses = state.courses.filter(e => e.id !== data);
-      return {
-        ...state,
-        courses: courses,
-      };
     case EDIT_COURSE:
       const courseList = state.courses.filter(e => e.id !== data.id);
       return {

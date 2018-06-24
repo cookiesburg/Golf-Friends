@@ -19,13 +19,14 @@ class DelUserBtn extends Component {
 
   delUser = (e) => {
     e.preventDefault();
-    const user = this.props.user;
-    this.props.deleteUser(user);
+    const id = this.props.user.id;
+    console.log(id, 'in btn comp');
+    this.props.deleteUser(id);
   };
 
   render() {
     return(
-      <DeleteButton>
+
         <Toggle>
           {({on, toggle}) => (
             <Fragment>
@@ -38,12 +39,12 @@ class DelUserBtn extends Component {
                   <button onClick={toggle}>nevermind</button>
                 </div>
               </Modal>
-                <i className="material-icons" onClick={toggle}>delete</i>
+              <button className='delete' onClick={ (e) => toggle()}>
+                DELETE USER
+              </button>
             </Fragment>
           )}
         </Toggle>
-
-      </DeleteButton>
     );
   }
 }
@@ -56,20 +57,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   deleteUser,
 }, dispatch);
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(DelUserBtn);
-
-const DeleteButton = styled.button`
-  background-color: #222;
-  border: none;
-  i {
-    font-size: 20px;
-    color: white;
-    background-color: #222;
-
-    :hover {
-      color: red;
-      cursor: pointer;
-    }
-  }
-`;
