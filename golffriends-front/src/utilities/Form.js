@@ -34,7 +34,7 @@ const Form = styled.div`
     justify-content: space-around;
     align-items: center;
     padding-top: 50px;
-      input, select {
+      input, select, p {
         height:30px;
         font-size: 24px;
         text-align: center;
