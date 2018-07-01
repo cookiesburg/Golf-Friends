@@ -53,32 +53,3 @@ function calculateHandicap(scores) {
     return Math.round((lowestSum / 10)*.96)
   }
 }
-// componentDidMount(id) {
-//   axios.get('http://localhost:3001/api/v1/scores')
-//   .then(response => {
-//     const scores = response.data.filter(score => score.user_id === id);
-//     const handicap = this.calculateHandicap(scores);
-//     this.setState({ scores: scores, handicap: handicap });
-//   })
-//   .catch(error => console.log(error))
-// }
-
-
-
-// export function addCourse(name, rating, slope) {
-//     console.log(name, rating, slope);
-//   return async function (dispatch) {
-//     console.log(name, rating, slope);
-//     const res = await fetch('http://localhost:3001/api/v1/courses', {
-//       method: 'POST',
-//       headers: {'Content-Type': 'application/json'},
-//       body: JSON.stringify({'course': {'name': name, 'rating': rating, 'slope': slope}}),
-//     });
-//     const course = await res.json();
-//     console.log(course);
-//     return dispatch({
-//       type: 'ADD_COURSE',
-//       data: course,
-//     });
-//   };
-// }

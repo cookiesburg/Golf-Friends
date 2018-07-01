@@ -39,7 +39,7 @@ class DelUserBtn extends Component {
                     </div>
                 </Form>
               </Modal>
-              <button className='delete' onClick={ (e) => toggle()}>
+              <button className='delete' onClick={ toggle }>
                 DELETE USER
               </button>
             </Fragment>

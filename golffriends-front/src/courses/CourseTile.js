@@ -4,7 +4,6 @@ import Toggle from '../Toggle';
 import Modal from '../Modal';
 import CourseForm from './CourseForm';
 import { Form } from '../utilities/Form';
-// import CourseForm from './CourseForm';
 
 class CourseTile extends Component {
   render() {
@@ -19,20 +18,6 @@ class CourseTile extends Component {
                 <Fragment>
                   <Modal on={on} toggle={toggle}>
                     <CourseForm course={course} toggle={toggle}/>
-                    {/* <Form className='formWrap'>
-                      <div className='header'>
-                        Edit Course
-                      </div>
-                      <div className='body'>
-                        <input type='text' placeholder={this.props.name}  />
-                        <input className='number' type='text' placeholder={this.props.rating}  />
-                        <input className='number' type='text' placeholder={this.props.slope}  />
-                      </div>
-                      <div className='buttons'>
-                        <button className='save'>SAVE CHANGES</button>
-                        <button className='delete'>DELETE COURSE</button>
-                      </div>
-                    </Form> */}
                   </Modal>
                   <i onClick={toggle} className="material-icons edit">edit</i>
                 </Fragment>
@@ -53,14 +38,28 @@ font-family: karla;
 background-color: var(--base);
 color: white;
 display: flex;
+border-radius: 8px;
 
 :hover {
   box-shadow: 0 0 1rem gray;
 }
   .name {
     flex-grow: 4
+    min-width: 70%;
   }
   .rating, .slope, .edit {
     flex-grow: 1
+    min-width: 10%;
+  }
+
+  div {
+    
+    justify-content: right;
+  }
+
+  i {
+    :hover {
+      cursor: pointer;
+    }
   }
 `;

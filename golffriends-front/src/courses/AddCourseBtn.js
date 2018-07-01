@@ -80,8 +80,13 @@ background-color: var(--base);
 color: white;
 display: flex;
 justify-content: center;
+border-radius: 8px;
 
 :hover {
   box-shadow: 0 0 1rem gray;
 }
+i {
+  cursor: pointer;
+}
+
 `;

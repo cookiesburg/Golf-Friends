@@ -13,39 +13,34 @@ class UserTile extends Component {
     return(
       <div>
         <Tile >
-          <TopRow>
+          <div className='topRow'>
             <EditUserBtn user={this.props.user}/>
-          </TopRow>
-          <Name>{this.props.user.name}</Name>
-          <ButtonBar>
-
-            <ButtonWrapper>
-              <Toggle>
-                {({on, toggle}) => (
-                  <Fragment>
-                    <Modal on={on} toggle={toggle}>
-                      <RoundHistory user={this.props.user} />
-                    </Modal>
-                    <ModalButton onClick={toggle}>SCORES</ModalButton>
-                  </Fragment>
-                )}
-              </Toggle>
-            </ButtonWrapper>
-
-            <ButtonWrapper>
+          </div>
+          <div className='name'>
+            {this.props.user.name}
+          </div>
+          <div className='buttonBar'>
+            <Toggle>
+              {({on, toggle}) => (
+                <Fragment>
+                  <Modal on={on} toggle={toggle}>
+                    <RoundHistory user={this.props.user} />
+                  </Modal>
+                  <button onClick={toggle}>SCORES</button>
+                </Fragment>
+              )}
+            </Toggle>
             <Toggle>
               {({on, toggle}) => (
                 <Fragment>
                   <Modal on={on} toggle={toggle}>
                     <ScoreForm user={this.props.user} toggle={toggle}/>
                   </Modal>
-                  <ModalButton onClick={toggle}>POST</ModalButton>
+                  <button onClick={toggle}>POST</button>
                 </Fragment>
               )}
             </Toggle>
-            </ButtonWrapper>
-
-          </ButtonBar>
+          </div>
         </Tile>
       </div>
     );
@@ -57,57 +52,56 @@ export default UserTile;
 const Tile = styled.div`
   display: flex;
   flex-direction: column;
-  width: 150px;
-  height: 150px;
-  background: #222;
+  width: 180px;
+  height: 220px;
+  background: gray;
   cursor: default;
-  justify-content: center;
-  align-items: center;
   font-size: 25px;
-  border: 3px solid black;
   color: white;
   margin-top: 30px;
   margin-bottom: 30px;
   transition: all .4s ease;
+  border-radius: 8px;
+  text-transform: uppercase;
     :hover {
       box-shadow: 0 0 3rem gray;
     }
-`;
-const TopRow = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  font-size: 12px;
-  color: white;
-`;
-const Name = styled.div`
-  display: flex;
-  flex-grow: 5;
-  justify-content: center;
-  align-items: center;
-  letter-spacing: 3px;
-`;
-const ButtonBar = styled.div`
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
+    .topRow {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      font-size: 12px;
+      color: white;
+    }
+    .name {
+      display: flex;
+      flex-grow: 5;
+      justify-content: left;
+      margin-left: 20px;
+      align-items: center;
+      letter-spacing: 3px;
+      font-size: 20px;
+    }
+    .buttonBar {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      margin-left: 20px;
+      margin-bottom: 20px;
 
-`;
-const ButtonWrapper = styled.div`
-  display: flex;
-  flex-grow: 1;
-  background: var(--base);
-  justify-content: center;
-  align-items: center;
-`;
-const ModalButton = styled.button`
-  flex-grow: 1;
-  height: 100%;
-  border: none;
-  letter-spacing: 2px;
-  transition: all .4s ease;
-    :hover {
-      box-shadow: 0 0 3rem black;
-      cursor: pointer;
+       button {
+         width: 40%;
+         margin-bottom: 10px;
+         font-size: 10px;
+         padding: 3px;
+         border-radius: 8px;
+         font-weight: bold;
+         border:3px solid gray;
+         
+         :hover {
+           cursor: pointer;
+           background: var(--base);
+         }
+       }
     }
 `;

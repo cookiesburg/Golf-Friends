@@ -68,21 +68,27 @@ export default connect(mapStateToProps, mapDispatchToProps)(AddUserBtn);
 const Tile = styled.div`
   display: flex;
   flex-direction: column;
-  width: 150px;
-  height: 150px;
-  background: #222;
+  width: 180px;
+  height: 220px;
+  background: gray;
   cursor: default;
   justify-content: center;
   align-items: center;
-  font-size: 25px;
-  box-shadow: 0 0 15px black;
+  font-size: 50px;
   color: white;
   margin-top: 30px;
   margin-bottom: 30px;
   transition: all .4s ease;
+  border-radius: 8px;
     :hover {
       box-shadow: 0 0 1rem var(--base);
     }
+    i {
+      cursor: pointer;
+      background: gray;
+      color: white;
+    }
+
 `;
 
 const UserForm = styled.form`

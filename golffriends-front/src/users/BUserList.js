@@ -39,12 +39,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   getUsers,
 }, dispatch);
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     getUsers: () => dispatch(getUsers())
-//   };
-// };
-
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
 
 const UsersContainer = styled.div`

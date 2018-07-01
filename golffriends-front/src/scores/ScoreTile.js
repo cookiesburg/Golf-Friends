@@ -7,7 +7,7 @@ export default class ScoreTile extends Component {
     return(
       <TileWrapper>
         <ScoreDis>{this.props.strokes}</ScoreDis>
-        <CourseDate>{this.props.created_at}<span>{this.props.course}</span></CourseDate>
+        <Course>{this.props.course}</Course>
       </TileWrapper>
     );
   }
@@ -20,20 +20,22 @@ const TileWrapper = styled.div`
   width: 100%;
   justify-content: space-around;
   margin: 1px;
-  height: 33%;
-  background-color: #222;
+  height: 24%;
+  border: 1px solid black;
+  font-weight: normal;
+  border-radius: 8px;
 `;
 const ScoreDis = styled.div`
-  font-size: 37px;
+  font-size: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+
 `;
-const CourseDate = styled.div`
-  font-size: 11px;
+const Course = styled.div`
+  font-size: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: orange;
+  color: gray;
 `;

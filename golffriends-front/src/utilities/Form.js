@@ -10,6 +10,7 @@ const Form = styled.div`
   width: 100%;
   justify-content: center;
   font-family: karla;
+  border-radius: 8px;
 
   ${'' /* just fro round history component */}
   .history {
@@ -17,7 +18,6 @@ const Form = styled.div`
   }
 
   .header {
-    border: 1px solid black;
     height: 100px
     background: #222;
     font-size: 24px;
@@ -25,9 +25,11 @@ const Form = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 6px 6px 0 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
   .body {
-    border: 1px solid black;
     height: 300px;
     display: flex;
     flex-direction: column;
@@ -51,7 +53,6 @@ const Form = styled.div`
       }
   }
   .buttons {
-    border: 1px solid black;
     height: 100px;
     display: flex;
     flex-direction: column;

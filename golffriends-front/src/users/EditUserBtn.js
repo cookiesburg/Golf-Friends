@@ -41,7 +41,7 @@ class EditUserBtn extends Component {
               <Modal on={on} toggle={toggle}>
                 <Form>
                   <div className='header'>
-                    User Form
+                    Edit User Form
                   </div>
                   <div className='body'>
                     <input className='text'type='text' placeholder={this.state.name} onChange={this.update('name')} />
@@ -78,15 +78,17 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(mapStateToProps, mapDispatchToProps)(EditUserBtn);
 
 const EditButton = styled.button`
-  background-color: #222;
+  background-color: gray;
   border: none;
+  border-radius: 8px;
   i {
-    font-size: 20px;
+    font-size: 22px;
     color: white;
-    background-color: #222;
+    background-color: gray;
+    padding: 10px;
 
     :hover {
-      color: green;
+      color: var(--base);
       cursor: pointer;
     }
   }

@@ -1,6 +1,7 @@
 import { GET_USERS,
-         // GET_USER,
-         ADD_USER, DELETE_USER, EDIT_USER,  } from './actions';
+         ADD_USER,
+         DELETE_USER,
+         EDIT_USER, } from './actions';
 
 const initialState = {
   users: [],
@@ -19,12 +20,6 @@ export default function (state = initialState, action) {
         users: data,
         usersLoaded: true,
       };
-    // case GET_USER:
-    //   return {
-    //     ...state,
-    //     user: data,
-    //     userLoaded: true,
-    //   };
     case ADD_USER:
       return {
         ...state,

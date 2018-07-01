@@ -23,9 +23,11 @@ class RoundHistory extends Component {
         <Display>
           <div className='handicap'>
               <h4>HANDICAP INDEX</h4>
-              <p>{handicap}</p>
+              { handicap > 0 ?
+                <p className='neg'>-{handicap}</p> :
+                <p className='scratch'>+{handicap}</p>
+              }
           </div>
-
           <div className='scores'>
             {scores.map(score => <ScoreTile  key={score.created_at} course={score.course.name} strokes={score.strokes} />)}
           </div>
@@ -48,7 +50,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(mapStateToProps, mapDispatchToProps)(RoundHistory);
 
 const Header = styled.div`
-  border: 1px solid black;
   height: 100px
   background: #222;
   font-size: 24px;
@@ -56,11 +57,15 @@ const Header = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 6px 6px 0 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 `;
 
 const Display = styled.div`
   display: flex;
   height: 100%;
+  padding: 10px;
 
     .handicap {
       width: 250px;
@@ -68,20 +73,29 @@ const Display = styled.div`
       flex-direction: column;
       justify-content: center;
       align-items: center;
+        font-family: lato;
       h4 {
         color: gray;
       }
       p {
         font-size: 40px;
+        font-weight: bold;
+      }
+      .neg{
+        color: red;
+      }
+      .scratch{
+        color: black;
       }
     }
     .scores {
       display: flex;
       flex-direction: column;
-      width: 150px;
+      width: 120px;
       height: 100%;
       flex-wrap: nowrap;
       overflow-x: auto;
+      font-family: lato;
     }
 
 `;
