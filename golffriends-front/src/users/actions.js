@@ -4,9 +4,10 @@ export const DELETE_USER = 'DELETE_USER';
 export const EDIT_USER = 'EDIT_USER';
 
 export function deleteUser(id) {
+
   return async function (dispatch) {
     const res = await fetch(`http://localhost:3001/api/v1/users/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
     const user = await res.json();
     console.log(user, 'after api')

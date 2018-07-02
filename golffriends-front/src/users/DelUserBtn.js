@@ -33,7 +33,7 @@ class DelUserBtn extends Component {
                     <div className='buttons'>
                       <button className='delete' onClick={ (e) => {
                         this.delUser(e);
-                        toggle();
+                        toggle(e);
                       }}>Delete User</button>
                       <button className='save' onClick={toggle}>nevermind</button>
                     </div>

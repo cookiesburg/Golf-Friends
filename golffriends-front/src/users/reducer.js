@@ -26,7 +26,7 @@ export default function (state = initialState, action) {
         users: [data, ...state.users],
       };
     case DELETE_USER:
-      const users = state.users.filter(e => e.id !== data);
+      const users = state.users.filter(e => e.id !== data.id);
       return {
         ...state,
         users: users,
