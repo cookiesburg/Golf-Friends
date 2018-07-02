@@ -79,8 +79,9 @@ const Tile = styled.div`
       justify-content: left;
       margin-left: 20px;
       align-items: center;
-      letter-spacing: 3px;
-      font-size: 20px;
+      text-align: left;
+      letter-spacing: 2px;
+      font-size: 18px;
     }
     .buttonBar {
       display: flex;
@@ -97,7 +98,7 @@ const Tile = styled.div`
          border-radius: 8px;
          font-weight: bold;
          border:3px solid gray;
-         
+
          :hover {
            cursor: pointer;
            background: var(--base);

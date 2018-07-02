@@ -16,14 +16,13 @@ class CourseList extends Component {
     if (!isLoaded) return <h1>loading courses...</h1>;
     return (
       <Fragment>
-        <nav>
-          <Link to='/'>USERS</Link>
-          <Link to='/courses'>COURSES</Link>
-        </nav>
         <CourseWrapper>
           <AddCourseBtn />
           {courses.map(course => <CourseTile key={course.id}course={course}/>)}
         </CourseWrapper>
+        <nav className='userLink'>
+          <Link to='/'> USER LIST </Link>
+        </nav>
     </Fragment>
     );
   }
@@ -47,4 +46,5 @@ const CourseWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
+  margin-bottom: 30px;
 `;

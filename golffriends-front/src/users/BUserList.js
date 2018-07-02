@@ -17,14 +17,13 @@ class UserList extends Component {
     if (!isLoaded) return <h1>loading users...</h1>;
     return (
       <Fragment>
-        <nav>
-          <Link to='/'>USERS</Link>
-          <Link to='/courses'>COURSES</Link>
-        </nav>
         <UsersContainer>
           <AddUserBtn />
           {users.map(user => <UserTile key={user.id} user={user} id={user.id} />)}
         </UsersContainer>
+        <nav>
+          <Link to='/courses'> COURSE LIST </Link>
+        </nav>
     </Fragment>
     );
   }

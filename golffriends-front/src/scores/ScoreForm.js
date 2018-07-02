@@ -6,6 +6,7 @@ import { getCourses } from '../courses/actions';
 import { postScore } from './actions';
 import { Form } from '../utilities/Form';
 
+
 class ScoreForm extends Component {
   state = {
     course: '',
@@ -49,10 +50,9 @@ class ScoreForm extends Component {
               <option value="" disabled selected>select course</option>
               {courses.map(course => <option key={course.id}>{course.name}</option>)}
             </select>
-            <select className='text' ref='holesSelector' onChange={(e) => { this.selectHoles(); } }>
-              <option value="" disabled selected>9 or 18</option>
-              <option value={true}>9 Holes</option>
+            <select className='holes' ref='holesSelector' onChange={(e) => { this.selectHoles(); } }>
               <option value={false}>18 Holes</option>
+              <option value={true}>9 Holes</option>
             </select>
             <input className='number' ref='strokesBox' placeholder='strokes' onChange={(e) => {this.enterStrokes(); } } />
           </div>

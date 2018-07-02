@@ -65,7 +65,7 @@ const Form = styled.div`
         color: white;
         font-size:18px;
         font-weight: bold;
-
+        text-transform: uppercase;
         :hover {
           box-shadow: 0 0 1rem gray;
         }
