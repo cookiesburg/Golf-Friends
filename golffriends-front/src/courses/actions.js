@@ -7,7 +7,6 @@ export function getCourses() {
   return async function (dispatch) {
     const res = await fetch(`http://localhost:3001/api/v1/courses`);
     const courses = await res.json();
-    console.log(courses);
     return dispatch({
       type: 'GET_COURSES',
       data: courses,
@@ -30,7 +29,6 @@ export function addCourse(name, rating, slope) {
 }
 
 export function editCourse(id, course) {
-  console.log('in action',id, course);
   return async function (dispatch) {
      const res = await fetch(`http://localhost:3001/api/v1/courses/${id}`, {
        method: 'PUT',
@@ -43,7 +41,6 @@ export function editCourse(id, course) {
          }}),
      });
      const updatedCourse = await res.json();
-     console.log('updated',updatedCourse)
      return dispatch({
        type: 'EDIT_COURSE',
        data: updatedCourse,

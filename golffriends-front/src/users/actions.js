@@ -36,7 +36,6 @@ export function addUser(name) {
        body: JSON.stringify({'user': {'name': name}}),
      });
      const user = await res.json();
-     console.log(user);
      return dispatch({
        type: 'ADD_USER',
        data: user,
@@ -46,7 +45,6 @@ export function addUser(name) {
 
 
 export function editUser(id, name) {
-  console.log('in action',id, name);
   return async function (dispatch) {
      const res = await fetch(`http://localhost:3001/api/v1/users/${id}`, {
        method: 'PUT',
@@ -57,7 +55,6 @@ export function editUser(id, name) {
          }}),
      });
      const user = await res.json();
-     console.log(user);
      return dispatch({
        type: 'EDIT_USER',
        data: user,

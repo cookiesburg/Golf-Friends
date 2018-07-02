@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
     case POST_SCORE:
       return {
         ...state,
-        courses: [data, ...state.scores]
+        scores: [data, ...state.scores]
       };
     default:
       return state;

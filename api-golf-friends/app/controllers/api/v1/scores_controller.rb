@@ -27,7 +27,7 @@ module Api::V1
     private
 
     def score_params
-      params.require(:score).permit(:strokes, :user_id, :course_id)
+      params.require(:score).permit(:strokes, :user_id, :course_id, :isNine)
     end
 
   end

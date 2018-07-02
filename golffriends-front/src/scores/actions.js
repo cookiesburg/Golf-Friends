@@ -14,16 +14,14 @@ export function getScores(user) {
     });
   };
 }
-export function postScore(courseId, strokes, id) {
+export function postScore(courseId, strokes, id, nine) {
   return async function (dispatch) {
-    console.log(courseId);
     const res = await fetch('http://localhost:3001/api/v1/scores', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({'score': {'strokes': strokes, 'user_id': id, 'course_id': courseId}}),
+      body: JSON.stringify({'score': {'strokes': strokes, 'user_id': id, 'course_id': courseId, 'nine?': nine}}),
     });
     const score = await res.json();
-    console.log(score);
     return dispatch({
       type: 'POST_SCORE',
       data: score,
@@ -37,7 +35,11 @@ function calculateHandicap(scores) {
   };
 
   const diffs = scores.map(score => {
-    return ((score.strokes - score.course.rating)*113 / score.course.slope);
+    if (score.isNine === true) {
+      return (score.strokes*2 - score.course.rating)*113 / score.course.slope ;
+    } else {
+      return (score.strokes - score.course.rating)*113 / score.course.slope ;
+    }
   });
   const sorted = diffs.sort((a, b) => a>b ? 1 : -1 );
 

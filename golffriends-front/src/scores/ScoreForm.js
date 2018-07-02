@@ -11,6 +11,7 @@ class ScoreForm extends Component {
     course: '',
     strokes: '',
     userId: this.props.user.id,
+    nine: false,
   }
 
 
@@ -21,8 +22,8 @@ class ScoreForm extends Component {
     e.preventDefault();
     const course = this.props.courses.filter(course => course.name === this.state.course);
     const courseId = course[0].id;
-    const { strokes, userId } = this.state;
-    this.props.postScore(courseId, strokes, userId)
+    const { strokes, userId, nine } = this.state;
+    this.props.postScore(courseId, strokes, userId, nine)
 
   };
   selectCourse(){
@@ -30,6 +31,10 @@ class ScoreForm extends Component {
   }
   enterStrokes(){
     this.setState({strokes: this.refs.strokesBox.value});
+  }
+  selectHoles(){
+    this.setState({nine: this.refs.holesSelector.value});
+    console.log(this.state.nine);
   }
 
   render() {
@@ -43,6 +48,11 @@ class ScoreForm extends Component {
             <select className='text' ref='courseSelector' onChange={(e) => { this.selectCourse(); } }>
               <option value="" disabled selected>select course</option>
               {courses.map(course => <option key={course.id}>{course.name}</option>)}
+            </select>
+            <select className='text' ref='holesSelector' onChange={(e) => { this.selectHoles(); } }>
+              <option value="" disabled selected>9 or 18</option>
+              <option value={true}>9 Holes</option>
+              <option value={false}>18 Holes</option>
             </select>
             <input className='number' ref='strokesBox' placeholder='strokes' onChange={(e) => {this.enterStrokes(); } } />
           </div>
