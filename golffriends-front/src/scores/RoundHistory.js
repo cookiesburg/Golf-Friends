@@ -24,8 +24,8 @@ class RoundHistory extends Component {
           <div className='handicap'>
               <h4>HANDICAP INDEX</h4>
               { handicap > 0 ?
-                <p className='neg'>-{handicap}</p> :
-                <p className='scratch'>+{handicap}</p>
+                <p className='neg'>{handicap}</p> :
+                <p className='scratch'>{handicap}</p>
               }
           </div>
           <div className='scores'>

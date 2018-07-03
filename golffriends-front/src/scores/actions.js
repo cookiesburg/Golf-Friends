@@ -31,7 +31,7 @@ export function postScore(courseId, strokes, id, nine) {
 
 function calculateHandicap(scores) {
   if(scores.length < 5) {
-    return '5 SCORES REQUIRED';
+    return 'N/A';
   };
 
   const diffs = scores.map(score => {
