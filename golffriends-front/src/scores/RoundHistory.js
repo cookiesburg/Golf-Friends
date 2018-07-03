@@ -64,7 +64,7 @@ const Header = styled.div`
 
 const Display = styled.div`
   display: flex;
-  height: 100%;
+  height: 400px;
   padding: 10px;
 
     .handicap {
